@@ -8,5 +8,5 @@ export const userRepository  = new UserService(
     AppDataSource.getRepository(User)
 )
 export const appointmentRepository = new AppointmentService(
-  AppDataSource.getRepository(Appointment)
+    AppDataSource.getRepository(Appointment)
 );

@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import Encrypt from "../helper/encryptHelper";
 
-export const authentification = async (
+export const authentication = async (
   req: Request,
   res: Response,
   next: NextFunction

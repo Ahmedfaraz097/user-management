@@ -8,8 +8,8 @@ export const loginValidator = async (
   res: Response,
   next: NextFunction
 ) => {
-  const loginDto = plainToClass(LoginDto, req.body); // convert plain object to class instance and also do type conversion
-  const errors: ValidationError[] = await validate(loginDto); // validate the class instance
+  const loginDto = plainToClass(LoginDto, req.body);
+  const errors: ValidationError[] = await validate(loginDto)
 
   if (errors.length > 0) {
     const errorMessages = errors

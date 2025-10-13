@@ -31,8 +31,10 @@ export class OtpHelper {
     return set;
   }
 
-  static isOtpValid(user: User, otp: number): boolean {
+  static ValidOtp(user: User, otp: number): boolean {
     const now = new Date();
-    return user.otpCode === otp && user.otpExpiredAt > now;
+    const expiry = new Date(user.otpExpiredAt);
+    console.log(expiry)
+    return user.otpCode === otp && expiry.getTime() > now.getTime();
   }
 }

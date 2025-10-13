@@ -8,9 +8,8 @@ export const appointmentValidator = async (
   res: Response,
   next: NextFunction
 ) => {
-  const appointmentDto = plainToClass(AppointmentDto, req.body); // convert plain object to class instance and also do type conversion
-  const errors: ValidationError[] = await validate(appointmentDto); // validate the class instance
-
+  const appointmentDto = plainToClass(AppointmentDto, req.body);
+  const errors: ValidationError[] = await validate(appointmentDto);
   if (errors.length > 0) {
     const errorMessages = errors
       .map((error) => Object.values(error.constraints || {}))

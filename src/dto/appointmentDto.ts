@@ -1,10 +1,4 @@
-import {
-    IsString,
-    IsOptional,
-    IsDefined,
-    IsInt,
-    IsNotEmpty,
-} from "class-validator";
+import {IsString,IsOptional,IsDefined,IsInt,IsNotEmpty,} from "class-validator";
   
 export class AppointmentDto {
     @IsDefined()

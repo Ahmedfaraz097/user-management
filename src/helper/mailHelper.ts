@@ -19,7 +19,7 @@ export class Mailer {
 
     try {
       await transporter.sendMail({
-        from: `"Alpha Project" <${process.env.SENDER_EMAIL}>`,
+        from: `"UserManagement Project" <${process.env.SENDER_EMAIL}>`,
         to,
         subject,
         html,

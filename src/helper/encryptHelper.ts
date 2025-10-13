@@ -10,10 +10,7 @@ export default class Encrypt {
     return bcrypt.hashSync(password, salt);
   }
 
-  static async comparePassword(
-    password: string,
-    hashedPassword: string
-  ): Promise<boolean> {
+  static async comparePassword(password: string,hashedPassword: string): Promise<boolean> {
     return bcrypt.compareSync(password, hashedPassword);
   }
 
@@ -26,7 +23,6 @@ export default class Encrypt {
   }
 
   static verifyToken(token: string): any {
-    console.log(token);
     try {
       return jwt.verify(token, JWT_SECRET);
     } catch (error) {
