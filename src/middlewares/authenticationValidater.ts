@@ -6,7 +6,7 @@ export const authentication = async (
   res: Response,
   next: NextFunction
 ) => {
-  const header = req.headers.authorization;
+  const header = req.cookies.authorization;
   if (!header) {
     return res.status(401).json({ message: "Unauthorized" });
   }

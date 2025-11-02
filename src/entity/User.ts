@@ -37,10 +37,10 @@ export class User {
   @Column({ nullable: true })
   otpCode: number;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ nullable: true })
   otpGeneratedAt: Date;
 
-  @CreateDateColumn()
+  @CreateDateColumn({nullable: true})
   otpExpiredAt: Date;
 
 

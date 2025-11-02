@@ -135,9 +135,18 @@ export class AuthController {
 
     const token = await Encrypt.generateToken({ id: user.id });
     const refreshToken = await Encrypt.generateRefreshToken({ id: user.id });
-    res
-      .status(200)
-      .json({ user: new UserResponseDto(user), token, refreshToken });
+    res.cookie(process.env.ACCESS_TOKEN_KEY, token, {
+      httpOnly: true,
+      sameSite: "lax",
+      secure: false,
+    })
+    res.cookie(process.env.REFRESH_TOKEN_KEY, refreshToken, {
+      httpOnly: true,
+      sameSite: "lax",
+      secure: false,
+    });
+
+    res.status(200).json(new UserResponseDto(user));
     }else{
         res
       .status(401)
@@ -157,9 +166,19 @@ export class AuthController {
       const newRefreshToken = await Encrypt.generateRefreshToken({
         id: payload.id,
       });
-      res.status(200).json({ token: newToken, refreshToken: newRefreshToken });
+      res.cookie(process.env.ACCESS_TOKEN_KEY, newToken, {
+        httpOnly: true,
+        sameSite: "lax",
+        secure: false,
+      });
+      res.cookie(process.env.REFRESH_TOKEN_KEY, newRefreshToken, {
+        httpOnly: true,
+        sameSite: "lax",
+        secure: false,
+      });
+      res.status(200).json({ message: "token updated" });
     } catch (error) {
-      res.status(401).json({ message: "Invalid refresh token" });
+      res.status(401).json({ message: "Invalid token" });
     }
   }
 }
